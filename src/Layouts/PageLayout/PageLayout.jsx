@@ -2,6 +2,9 @@ import { Box, Flex } from "@chakra-ui/react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { useLocation } from "react-router-dom";
 
+
+// instead of adding sidebar to every page, we can create a layout component that includes the sidebar
+// and wrap the page content with this layout component, except for the /auth page
 const PageLayout = ({ children }) => {
   const { pathname } = useLocation();
   return (
