@@ -114,75 +114,80 @@ const ProfilePost = ({ img }) => {
                     username="kentcdodds"
                     profilePic="https://bit.ly/kent-c-dodds"
                     text="Good clone dude!"
-                  />                  <Comment
-                  createdAt="1d ago"
-                  username="asaprogrammer_"
-                  profilePic="/profilepic.png"
-                  text="Dummy images from unsplash"
-                />
+                  />
                 <Comment
-                  createdAt="12h ago"
-                  username="abrahmov"
-                  profilePic="https://bit.ly/dan-abramov"
-                  text="Nice pic"
-                />
+                    createdAt="1d ago"
+                    username="asaprogrammer_"
+                    profilePic="/profilepic.png"
+                    text="Dummy images from unsplash"
+                  />
+                  <Comment
+                    createdAt="12h ago"
+                    username="abrahmov"
+                    profilePic="https://bit.ly/dan-abramov"
+                    text="Nice pic"
+                  />
+                  <Comment
+                    createdAt="3h ago"
+                    username="kentcdodds"
+                    profilePic="https://bit.ly/kent-c-dodds"
+                    text="Good clone dude!"
+                  />
                 <Comment
-                  createdAt="3h ago"
-                  username="kentcdodds"
-                  profilePic="https://bit.ly/kent-c-dodds"
-                  text="Good clone dude!"
-                />                  <Comment
-                createdAt="1d ago"
-                username="asaprogrammer_"
-                profilePic="/profilepic.png"
-                text="Dummy images from unsplash"
-              />
-              <Comment
-                createdAt="12h ago"
-                username="abrahmov"
-                profilePic="https://bit.ly/dan-abramov"
-                text="Nice pic"
-              />
-              <Comment
-                createdAt="3h ago"
-                username="kentcdodds"
-                profilePic="https://bit.ly/kent-c-dodds"
-                text="Good clone dude!"
-              />                  <Comment
-              createdAt="1d ago"
-              username="asaprogrammer_"
-              profilePic="/profilepic.png"
-              text="Dummy images from unsplash"
-            />
-            <Comment
-              createdAt="12h ago"
-              username="abrahmov"
-              profilePic="https://bit.ly/dan-abramov"
-              text="Nice pic"
-            />
-            <Comment
-              createdAt="3h ago"
-              username="kentcdodds"
-              profilePic="https://bit.ly/kent-c-dodds"
-              text="Good clone dude!"
-            />                  <Comment
-            createdAt="1d ago"
-            username="asaprogrammer_"
-            profilePic="/profilepic.png"
-            text="Dummy images from unsplash"
-          />
-          <Comment
-            createdAt="12h ago"
-            username="abrahmov"
-            profilePic="https://bit.ly/dan-abramov"
-            text="Nice pic"
-          />
-          <Comment
-            createdAt="3h ago"
-            username="kentcdodds"
-            profilePic="https://bit.ly/kent-c-dodds"
-            text="Good clone dude!"
-          />
+                    createdAt="1d ago"
+                    username="asaprogrammer_"
+                    profilePic="/profilepic.png"
+                    text="Dummy images from unsplash"
+                  />
+                  <Comment
+                    createdAt="12h ago"
+                    username="abrahmov"
+                    profilePic="https://bit.ly/dan-abramov"
+                    text="Nice pic"
+                  />
+                  <Comment
+                    createdAt="3h ago"
+                    username="kentcdodds"
+                    profilePic="https://bit.ly/kent-c-dodds"
+                    text="Good clone dude!"
+                  />
+                <Comment
+                    createdAt="1d ago"
+                    username="asaprogrammer_"
+                    profilePic="/profilepic.png"
+                    text="Dummy images from unsplash"
+                  />
+                  <Comment
+                    createdAt="12h ago"
+                    username="abrahmov"
+                    profilePic="https://bit.ly/dan-abramov"
+                    text="Nice pic"
+                  />
+                  <Comment
+                    createdAt="3h ago"
+                    username="kentcdodds"
+                    profilePic="https://bit.ly/kent-c-dodds"
+                    text="Good clone dude!"
+                  />
+                <Comment
+                    createdAt="1d ago"
+                    username="asaprogrammer_"
+                    profilePic="/profilepic.png"
+                    text="Dummy images from unsplash"
+                  />
+                  <Comment
+                    createdAt="12h ago"
+                    username="abrahmov"
+                    profilePic="https://bit.ly/dan-abramov"
+                    text="Nice pic"
+                  />
+                  <Comment
+                    createdAt="3h ago"
+                    username="kentcdodds"
+                    profilePic="https://bit.ly/kent-c-dodds"
+                    text="Good clone dude!"
+                  />
+
                 </VStack>
                 <Divider my={4} bg={"gray.8000"} />
                 <PostFooter isProfilePage={true}/>
