@@ -60,8 +60,20 @@ const useSignUpWithEmailAndPassword = () => {
         await setDoc(doc(firestore, 'users', newUser.user.uid), userDoc);
 
         // Optionally store minimal user info in local storage
-        localStorage.setItem('user', JSON.stringify(userDoc)); // if error arises, replace 'userDoc' with '{ uid: userDoc.uid, username: userDoc.username }
-
+        localStorage.setItem(
+          'user',
+          JSON.stringify({ uid: userDoc.uid, username: userDoc.username })
+        ); // if error arises, replace 'userDoc' with '{ uid: userDoc.uid, username: userDoc.username }
+        console.log(docSnap.data().uid);
+        console.log(docSnap.data().email);
+        console.log(docSnap.data().username);
+        console.log(docSnap.data().fullName);
+        console.log(docSnap.data().bio);
+        console.log(docSnap.data().profilePicURL);
+        console.log(docSnap.data().followers);
+        console.log(docSnap.data().following);
+        console.log(docSnap.data().posts);
+        console.log(docSnap.data().createdAt);
         loginUser(userDoc);
         // showToast('Success', 'Account created successfully!', 'success');
       }
