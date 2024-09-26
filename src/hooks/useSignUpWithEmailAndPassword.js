@@ -60,7 +60,7 @@ const useSignUpWithEmailAndPassword = () => {
         await setDoc(doc(firestore, 'users', newUser.user.uid), userDoc);
 
         // Optionally store minimal user info in local storage
-        // localStorage.setItem('user', JSON.stringify(userDoc)); // if error arises, replace 'userDoc' with '{ uid: userDoc.uid, username: userDoc.username }
+        localStorage.setItem('user', JSON.stringify(userDoc)); // if error arises, replace 'userDoc' with '{ uid: userDoc.uid, username: userDoc.username }
 
         loginUser(userDoc);
         // showToast('Success', 'Account created successfully!', 'success');

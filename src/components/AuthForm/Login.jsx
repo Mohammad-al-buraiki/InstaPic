@@ -1,35 +1,51 @@
-import { Button, Input } from "@chakra-ui/react";
-import { useState } from "react";
-
+import { Button, Input } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Alert, AlertIcon } from '@chakra-ui/react';
+import useLogin from '../../hooks/useLogin';
+import useAuthStore from '../../store/authStore';
 const Login = () => {
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: ''
   });
+
+  const { loading, error, login } = useLogin();
   return (
     <>
       <Input
-        placeholder="Email"
+        placeholder='Email'
         fontSize={14}
-              type="email"
-              size={"sm"}
+        type='email'
+        size={'sm'}
         value={inputs.email}
-        onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+        onChange={e => setInputs({ ...inputs, email: e.target.value })}
       />
       <Input
-        placeholder="Password"
+        placeholder='Password'
         fontSize={14}
-              type="password"
-                size={"sm"}
+        type='password'
+        size={'sm'}
         value={inputs.password}
-        onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+        onChange={e => setInputs({ ...inputs, password: e.target.value })}
       />
-      <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={14}>
+      {error && (
+        <Alert status='error' fontSize={13} p={2} borderRadius={4}>
+          <AlertIcon fontSize={12} />
+          {error.message}
+        </Alert>
+      )}
+      <Button
+        w={'full'}
+        colorScheme='blue'
+        size={'sm'}
+        fontSize={14}
+        isLoading={loading}
+        onClick={() => login(inputs)}
+      >
         Log in
       </Button>
     </>
   );
 };
-
 
 export default Login;

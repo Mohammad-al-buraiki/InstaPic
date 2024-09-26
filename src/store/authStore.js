@@ -1,4 +1,3 @@
-////////////////////////// original code //////////////////////////
 // import { create } from 'zustand';
 
 // const useAuthStore = create(set => ({
@@ -10,47 +9,22 @@
 
 // export default useAuthStore;
 
-/////////////////// chatgpt version of above the original code //////////////////////
-// import { create } from 'zustand';
-
-// const useAuthStore = create(set => ({
-//   user: JSON.parse(localStorage.getItem('user-info')),
-//   login: user => {
-//     localStorage.setItem('user-info', JSON.stringify(user));
-//     set({ user });
-//   },
-//   logout: () => {
-//     localStorage.removeItem('user-info');
-//     set({ user: null });
-//   },
-//   setUser: user => {
-//     localStorage.setItem('user-info', JSON.stringify(user));
-//     set({ user });
-//   }
-// }));
-
-// export default useAuthStore;
-
-//////////////////// original verison modified by chatgpt ///////////////////////
+///////////////////////////////////////////////////////////////////////////////
 import { create } from 'zustand';
 
 const useAuthStore = create(set => ({
-  user: JSON.parse(localStorage.getItem('user-info')),
-
+  user: localStorage.getItem('user-info')
+    ? JSON.parse(localStorage.getItem('user-info'))
+    : null, // Handle the case where 'user-info' is not in localStorage
   login: user => {
-    // Ensure only 'user-info' is used
     localStorage.setItem('user-info', JSON.stringify(user));
     set({ user });
   },
-
   logout: () => {
-    // Remove 'user-info' from localStorage on logout
     localStorage.removeItem('user-info');
     set({ user: null });
   },
-
   setUser: user => {
-    // Ensure only 'user-info' is used
     localStorage.setItem('user-info', JSON.stringify(user));
     set({ user });
   }
