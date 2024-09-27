@@ -34,6 +34,8 @@ const Sidebar = () => {
       icon: <Avatar size={'sm'} name='Burak Orkmez' src='/profilepic.png' />,
       text: 'Profile',
       link: '/asaprogrammer'
+      // to redirect to the profile of the logged in user use:
+      //       link: `/${useAuthStore(state => state.user.username)}`
     }
   ];
 
@@ -51,13 +53,7 @@ const Sidebar = () => {
       px={{ base: 2, md: 4 }}
     >
       <Flex direction='column' gap={10} w='full' height='full'>
-        <Link
-          to='/'
-          as={RouterLink}
-          pl={2}
-          display={{ base: 'none', md: 'block' }}
-          cursor='pointer'
-        >
+        <Link to='/' as={RouterLink} pl={2} display={{ base: 'none', md: 'block' }} cursor='pointer'>
           <InstagramLogo />
         </Link>
         <Link
