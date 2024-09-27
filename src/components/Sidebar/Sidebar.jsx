@@ -10,34 +10,35 @@ import {
 import { AiFillHome } from 'react-icons/ai';
 import { BiLogOut } from 'react-icons/bi';
 import useLogout from '../../hooks/useLogout';
+import SidebarItems from './SidebarItems';
 
 const Sidebar = () => {
-  const sidebarItems = [
-    {
-      icon: <AiFillHome size={25} />,
-      text: 'Home',
-      link: '/'
-    },
-    {
-      icon: <SearchLogo />,
-      text: 'Search'
-    },
-    {
-      icon: <NotificationsLogo />,
-      text: 'Notifications'
-    },
-    {
-      icon: <CreatePostLogo />,
-      text: 'Create'
-    },
-    {
-      icon: <Avatar size={'sm'} name='Burak Orkmez' src='/profilepic.png' />,
-      text: 'Profile',
-      link: '/asaprogrammer'
-      // to redirect to the profile of the logged in user use:
-      //       link: `/${useAuthStore(state => state.user.username)}`
-    }
-  ];
+  // const sidebarItems = [
+  //   {
+  //     icon: <AiFillHome size={25} />,
+  //     text: 'Home',
+  //     link: '/'
+  //   },
+  //   {
+  //     icon: <SearchLogo />,
+  //     text: 'Search'
+  //   },
+  //   {
+  //     icon: <NotificationsLogo />,
+  //     text: 'Notifications'
+  //   },
+  //   {
+  //     icon: <CreatePostLogo />,
+  //     text: 'Create'
+  //   },
+  //   {
+  //     icon: <Avatar size={'sm'} name='Burak Orkmez' src='/profilepic.png' />,
+  //     text: 'Profile',
+  //     link: '/asaprogrammer'
+  //     // to redirect to the profile of the logged in user use:
+  //     //       link: `/${useAuthStore(state => state.user.username)}`
+  //   }
+  // ];
 
   const { handleLogout, isLoggingOut } = useLogout();
 
@@ -69,7 +70,7 @@ const Sidebar = () => {
           <InstagramMobileLogo />
         </Link>
         <Flex direction={'column'} gap={5} cursor={'pointer'}>
-          {sidebarItems.map((item, index) => (
+          {/* {sidebarItems.map((item, index) => (
             <Tooltip
               key={index}
               hasArrow
@@ -95,7 +96,8 @@ const Sidebar = () => {
                 <Box display={{ base: 'none', md: 'block' }}>{item.text}</Box>
               </Link>
             </Tooltip>
-          ))}
+          ))} */}
+          <SidebarItems />
         </Flex>
         <Tooltip
           hasArrow

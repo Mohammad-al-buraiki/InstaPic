@@ -15,12 +15,22 @@ const useFollowUser = userId => {
 
   const handleFollowUser = async () => {
     setIsUpdating(true);
+    console.log('WE ARE HERE IN handleFollowUser, LINE 18');
+    // if (typeof userId !== 'string') {
+    //   console.error('userId must be a string:', userId.username);
+    //   setIsUpdating(false);
+    //   return;
+    // }
     try {
       const currentUserRef = doc(firestore, 'users', authUser.uid);
+      // console.log('21 line: currentUserRef: ', currentUserRef);
+      // console.log('22 line: USER TO FOLLOW: ', userId);
       const userToFollowOrUnfollorRef = doc(firestore, 'users', userId);
+      // console.log('RECEIVED USER TO FOLLOW BAck from firestore: ', userToFollowOrUnfollorRef);
       await updateDoc(currentUserRef, {
         following: isFollowing ? arrayRemove(userId) : arrayUnion(userId)
       });
+      // console.log('userToFollowOrUnfollorRef: ', userToFollowOrUnfollorRef);
 
       await updateDoc(userToFollowOrUnfollorRef, {
         followers: isFollowing ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid)
@@ -70,6 +80,7 @@ const useFollowUser = userId => {
       }
     } catch (error) {
       showToast('Error', error.message, 'error');
+      console.log('error coming from useFollowUser.js: ', error);
     } finally {
       setIsUpdating(false);
     }
