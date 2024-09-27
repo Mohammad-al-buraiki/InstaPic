@@ -13,7 +13,7 @@ const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore(state => state.user);
   const visitingOwnProfile =
-    authUser && authUser.username === userProfile.username;
+    authUser && authUser.username === userProfile.username; // just for committing
   const visitingAnotherProfileAndAuth =
     authUser && authUser.username !== userProfile.username;
   const { isOpen, onOpen, onClose } = useDisclosure();
