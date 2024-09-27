@@ -9,6 +9,7 @@ import {
 import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
 import { useDisclosure } from '@chakra-ui/react';
+import EditProfile from './EditProfile';
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore(state => state.user);
@@ -105,6 +106,7 @@ const ProfileHeader = () => {
 
         <Text fontSize={'sm'}>{userProfile?.bio || 'no bio yet'}</Text>
       </VStack>
+      {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
     </Flex>
   );
 };
