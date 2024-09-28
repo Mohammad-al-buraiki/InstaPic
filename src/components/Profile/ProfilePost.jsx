@@ -1,19 +1,84 @@
-import { Flex, GridItem, Text, Box, Avatar, VStack, Divider, Button } from '@chakra-ui/react';
+// import { Flex, GridItem, Text, Box, Avatar, VStack, Divider, Button } from '@chakra-ui/react';
+// import { AiFillHeart } from 'react-icons/ai';
+// import { FaComment } from 'react-icons/fa';
+// // import image
+// import { Image } from '@chakra-ui/react';
+// import { useDisclosure } from '@chakra-ui/react';
+// import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from '@chakra-ui/react';
+// import { MdDelete } from 'react-icons/md';
+// import Comment from '../Comment/Comment';
+// import PostFooter from '../FeedPosts/PostFooter';
+// import useUserProfileStore from '../../store/userProfileStore';
+// import useAuthStore from '../../store/authStore';
+// import { useState } from 'react';
+// import { useShowToast } from '../../hooks/useShowToast';
+// import { usePostStore } from '../../store/postStore';
+// import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+// import { firestore, storage } from '../../firebase/firebase';
+// import { deleteObject, ref } from 'firebase/storage';
+import {
+  Avatar,
+  Button,
+  Divider,
+  Flex,
+  GridItem,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  Text,
+  VStack,
+  useDisclosure
+} from '@chakra-ui/react';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaComment } from 'react-icons/fa';
-// import image
-import { Image } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from '@chakra-ui/react';
 import { MdDelete } from 'react-icons/md';
 import Comment from '../Comment/Comment';
 import PostFooter from '../FeedPosts/PostFooter';
 import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
+import useShowToast from '../../hooks/useShowToast';
+import { useState } from 'react';
+import { deleteObject, ref } from 'firebase/storage';
+import { firestore, storage } from '../../firebase/firebase';
+import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import usePostStore from '../../store/postStore';
+
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userProfile = useUserProfileStore(state => state.userProfile);
   const authUser = useAuthStore(state => state.user);
+
+  const showToast = useShowToast();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const deletePost = usePostStore(state => state.deletePost);
+  const decrementPostsCount = useUserProfileStore(state => state.deletePost);
+
+  const handleDeletePost = async () => {
+    if (!window.confirm('Are you sure you want to delete this post?')) return;
+    if (isDeleting) return;
+
+    try {
+      const imageRef = ref(storage, `posts/${post.id}`);
+      await deleteObject(imageRef);
+      const userRef = doc(firestore, 'users', authUser.uid);
+      await deleteDoc(doc(firestore, 'posts', post.id));
+
+      await updateDoc(userRef, {
+        posts: arrayRemove(post.id)
+      });
+
+      deletePost(post.id);
+      decrementPostsCount(post.id);
+      showToast('Success', 'Post deleted successfully', 'success');
+    } catch (error) {
+      showToast('Error', error.message, 'error');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
   return (
     <>
       <GridItem
@@ -100,6 +165,8 @@ const ProfilePost = ({ post }) => {
                       _hover={{ bg: 'whiteAlpha.300', color: 'red.600' }}
                       borderRadius={4}
                       p={1}
+                      onClick={handleDeletePost}
+                      isLoading={isDeleting}
                     >
                       <MdDelete size={20} cursor='pointer' />
                     </Button>
@@ -109,27 +176,13 @@ const ProfilePost = ({ post }) => {
                 <Divider my={4} bg={'gray.500'} />
 
                 <VStack w='full' alignItems={'start'} maxH={'350px'} overflowY={'auto'}>
-                  <Comment
-                    createdAt='1d ago'
-                    username='asaprogrammer_'
-                    profilePic='/profilepic.png'
-                    text='Dummy images from unsplash'
-                  />
-                  <Comment
-                    createdAt='12h ago'
-                    username='abrahmov'
-                    profilePic='https://bit.ly/dan-abramov'
-                    text='Nice pic'
-                  />
-                  <Comment
-                    createdAt='3h ago'
-                    username='kentcdodds'
-                    profilePic='https://bit.ly/kent-c-dodds'
-                    text='Good clone dude!'
-                  />
+                  {console.log(post.comments)}
+                  {post.comments.map(comment => (
+                    <Comment key={comment.createdAt} comment={comment} />
+                  ))}
                 </VStack>
                 <Divider my={4} bg={'gray.8000'} />
-                <PostFooter isProfilePage={true} />
+                <PostFooter isProfilePage={true} post={post} />
               </Flex>
             </Flex>
           </ModalBody>
