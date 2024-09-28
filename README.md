@@ -1,8 +1,17 @@
-# React + Vite
+Instagram Clone
+Welcome to my version of an Instagram clone! 🚀
+This app lets users post photos, like content, and follow profiles, which are some of the main features of Instagram.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Post Photos: Users can upload and share pictures.
+Like Content: Users can like posts to show appreciation.
+Follow Profiles: Users can follow others and keep up with their posts.
+Tech Stack
+Frontend: React, Vite
+Backend: Node.js
+Database: Firebase Firestore
+Package Manager: npm
+Why This Project?
+This project helped me learn more about full-stack development. It’s a personal project that I built to improve my skills.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Thanks for checking it out!
