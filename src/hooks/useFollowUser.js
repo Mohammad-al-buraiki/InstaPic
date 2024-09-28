@@ -42,6 +42,7 @@ const useFollowUser = userId => {
           ...authUser,
           following: authUser.following.filter(uid => uid !== userId)
         });
+        // keep an eye for this error. when we're in the homepage, we don't have userProfile
         if (userProfile)
           setUserProfile({
             ...userProfile,
