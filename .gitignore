@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# having.env below will ignore all files with the name .env
+# from being tracked by git. This is useful for keeping your
+# environment variables secret. environment variables are
+# used to store sensitive data like API keys, passwords, etc.
+.env
