@@ -21,6 +21,7 @@ import { useRef } from 'react';
 import usePreviewImg from '../../hooks/usePreviewImg';
 import useEditProfile from '../../hooks/useEditProfile';
 import useShowToast from '../../hooks/useShowToast';
+import { a } from 'framer-motion/client';
 
 const EditProfile = ({ isOpen, onClose }) => {
   //   const [inputs, setInputs] = useState({
@@ -38,17 +39,17 @@ const EditProfile = ({ isOpen, onClose }) => {
   //   const fileRef = useRef(null);
   //   console.log(selectedFile);
 
-  const [inputs, setInputs] = useState({
-    fullName: '',
-    username: '',
-    bio: ''
-  });
-
   const authUser = useAuthStore(state => state.user);
   const fileRef = useRef(null);
   const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
   const { isUpdating, editProfile } = useEditProfile();
   const showToast = useShowToast();
+
+  const [inputs, setInputs] = useState({
+    fullName: authUser.fullName,
+    username: authUser.username,
+    bio: authUser.bio
+  });
 
   const handleEditProfile = async () => {
     try {
@@ -94,7 +95,8 @@ const EditProfile = ({ isOpen, onClose }) => {
                     placeholder={'Full Name'}
                     size={'sm'}
                     type={'text'}
-                    value={inputs.fullName || authUser.fullName}
+                    value={inputs.fullName}
+                    // value={inputs.fullName || authUser.fullName}
                     onChange={e => setInputs({ ...inputs, fullName: e.target.value })}
                   />
                 </FormControl>
@@ -105,7 +107,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     placeholder={'Username'}
                     size={'sm'}
                     type={'text'}
-                    value={inputs.username || authUser.username}
+                    value={inputs.username}
                     onChange={e => setInputs({ ...inputs, username: e.target.value })}
                   />
                 </FormControl>
@@ -116,7 +118,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     placeholder={'Bio'}
                     size={'sm'}
                     type={'text'}
-                    value={inputs.bio || authUser.bio}
+                    value={inputs.bio}
                     onChange={e => setInputs({ ...inputs, bio: e.target.value })}
                   />
                 </FormControl>
