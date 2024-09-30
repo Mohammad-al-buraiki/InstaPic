@@ -80,6 +80,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
                 bg={'transparent'}
                 onClick={handleSubmitComment}
                 isLoading={isCommenting}
+                isDisabled={!comment.trim()} // Disable the button if the comment is empty
               >
                 Post
               </Button>
