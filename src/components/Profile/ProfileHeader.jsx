@@ -104,6 +104,7 @@ import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
 import EditProfile from './EditProfile';
 import useFollowUser from '../../hooks/useFollowUser';
+import { timeAgo } from '../../utils/timeAgo';
 
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
@@ -112,6 +113,11 @@ const ProfileHeader = () => {
   const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid);
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
   const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
+  const timestamp = userProfile.createdAt; // assuming this is in milliseconds
+  const date = new Date(timestamp);
+  const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+
+  // console.log(formattedDate);
 
   return (
     <Flex gap={{ base: 4, sm: 10 }} py={10} direction={{ base: 'column', sm: 'row' }}>
@@ -186,6 +192,11 @@ const ProfileHeader = () => {
           </Text>
         </Flex>
         <Text fontSize={'sm'}>{userProfile.bio}</Text>
+
+        {/* display user's createdAt */}
+        <Text fontSize={'sm'} color={'gray.500'}>
+          Joined on {formattedDate}
+        </Text>
       </VStack>
       {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
     </Flex>
