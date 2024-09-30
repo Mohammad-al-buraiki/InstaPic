@@ -46,7 +46,9 @@
 import { Box, Container, Flex, Skeleton, SkeletonCircle, Text, VStack } from '@chakra-ui/react';
 import FeedPost from './FeedPost';
 import useGetFeedPosts from '../../hooks/useGetFeedPosts';
-
+import { Image } from '@chakra-ui/react';
+import { Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();
 
@@ -70,12 +72,16 @@ const FeedPosts = () => {
 
       {!isLoading && posts.length > 0 && posts.map(post => <FeedPost key={post.id} post={post} />)}
       {!isLoading && posts.length === 0 && (
-        <>
+        <Flex>
           <Text fontSize={'md'} color={'red.400'}>
-            NO POSTS TO DISPLAY FROM YOUR FOLLOWING LIST
+            No posts to show, follow this guy
+            <Link as={RouterLink} to={'/m'} color={'blue.400'} fontWeight={'bold'} _hover={{ color: 'blue.500' }}>
+              {' '}
+              @m
+            </Link>
           </Text>
-          <Text color={'red.400'}>Stop coding and go make some!!</Text>
-        </>
+          <Text color={'red.400'}>, he has some cool content</Text>
+        </Flex>
       )}
     </Container>
   );
