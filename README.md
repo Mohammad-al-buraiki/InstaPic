@@ -1,5 +1,3 @@
-Instagram Clone
-
 Welcome to my version of an Instagram clone!
 This app lets users post photos, like content, and follow profiles, which are some of the main features of Instagram.
 
