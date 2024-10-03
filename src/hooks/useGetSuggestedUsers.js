@@ -17,9 +17,9 @@ const useGetSuggestedUsers = () => {
         const usersRef = collection(firestore, 'users');
         const q = query(
           usersRef,
-          where('uid', 'not-in', [authUser.uid, ...authUser.following]),
-          orderBy('uid'),
-          limit(3)
+          // where('uid', 'not-in', [authUser.uid, ...authUser.following]),
+          orderBy('createdAt')
+          // limit(5)
         );
 
         const querySnapshot = await getDocs(q);
