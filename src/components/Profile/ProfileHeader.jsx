@@ -105,7 +105,7 @@ import useAuthStore from '../../store/authStore';
 import EditProfile from './EditProfile';
 import useFollowUser from '../../hooks/useFollowUser';
 import { timeAgo } from '../../utils/timeAgo';
-
+import { useTranslation } from 'react-i18next'; // Added
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore(state => state.user);
@@ -116,7 +116,7 @@ const ProfileHeader = () => {
   const timestamp = userProfile.createdAt; // assuming this is in milliseconds
   const date = new Date(timestamp);
   const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
-
+  const { t } = useTranslation(); // this hook is used for translation. it basically returns a function that we can use to translate our text
   // console.log(formattedDate);
 
   return (
@@ -195,7 +195,7 @@ const ProfileHeader = () => {
 
         {/* display user's createdAt */}
         <Text fontSize={'sm'} color={'gray.500'}>
-          Joined on {formattedDate}
+          {t('Joined on')} {formattedDate}
         </Text>
       </VStack>
       {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}

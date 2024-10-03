@@ -34,10 +34,11 @@ import { Avatar, Box, Button, Flex, Skeleton, SkeletonCircle } from '@chakra-ui/
 import { Link } from 'react-router-dom';
 import useFollowUser from '../../hooks/useFollowUser';
 import { timeAgo } from '../../utils/timeAgo';
+import { useTranslation } from 'react-i18next'; // For the translation hook
 
 const PostHeader = ({ post, creatorProfile }) => {
   const { handleFollowUser, isFollowing, isUpdating } = useFollowUser(post.createdBy);
-
+  const { t } = useTranslation(); // Translation hook
   return (
     <Flex justifyContent={'space-between'} alignItems={'center'} w={'full'} my={2}>
       <Flex alignItems={'center'} gap={2}>
@@ -56,7 +57,7 @@ const PostHeader = ({ post, creatorProfile }) => {
             <Skeleton w={'100px'} h={'10px'} />
           )}
 
-          <Box color={'gray.500'}>• {timeAgo(post.createdAt)}</Box>
+          <Box color={'gray.500'}>• {timeAgo(post.createdAt, t)}</Box>
         </Flex>
       </Flex>
       <Box cursor={'pointer'}>

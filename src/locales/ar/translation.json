@@ -1,0 +1,29 @@
+{
+  "welcome": "مرحبا",
+  "no_posts": "لا توجد منشورات للعرض، تابع هذا الشخص",
+  "follow": "تابع",
+  "built_by": "تم بناؤه بواسطة",
+  "author_name": "محمد البريكي",
+  "no_more_posts": "يبدو أنك وصلت إلى نهاية الصفحة. تابع المزيد من الأشخاص لرؤية المزيد من المنشورات.",
+  "No posts to show, follow this guy": "لا توجد منشورات للعرض، تابع هذا الشخص",
+  "he has some cool content": "لديه بعض المحتوى الرائع",
+  "Likes": "إعجاب",
+  "Posted": "نشر",
+  "comments": "تعليقات",
+  "View all": "عرض الكل",
+  "Add a comment...": "أضف تعليق...",
+  "Post": "نشر",
+  "time": {
+    "secondsAgo": "منذ {{count}} ثانية",
+    "minutesAgo": "منذ {{count}} دقيقة",
+    "hoursAgo": "منذ {{count}} ساعة",
+    "daysAgo": "منذ {{count}} يوم",
+    "weeksAgo": "منذ {{count}} أسبوع"
+  },
+  "Joined on": "انضم في",
+  "OR": "أو",
+  "Don't have an account?": "ليس لديك حساب؟",
+  "Already have an account?": "هل لديك حساب؟",
+  "Sign Up": "إنشاء حساب",
+  "Login": "تسجيل الدخول"
+}

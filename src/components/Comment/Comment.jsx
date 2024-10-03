@@ -26,10 +26,10 @@ import { Avatar, Flex, Skeleton, SkeletonCircle, Text } from '@chakra-ui/react';
 import useGetUserProfileById from '../../hooks/useGetUserProfileById';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeAgo';
-
+import { useTranslation } from 'react-i18next';
 const Comment = ({ comment }) => {
   const { userProfile, isLoading } = useGetUserProfileById(comment.createdBy);
-
+  const { t } = useTranslation(); // this hook is used for translation. it basically returns a function that we can use to translate our text
   if (isLoading) return <CommentSkeleton />;
   return (
     <Flex gap={4}>
@@ -46,7 +46,7 @@ const Comment = ({ comment }) => {
           <Text fontSize={14}>{comment.comment}</Text>
         </Flex>
         <Text fontSize={12} color={'gray'}>
-          {timeAgo(comment.createdAt)}
+          {timeAgo(comment.createdAt, t)}
         </Text>
       </Flex>
     </Flex>

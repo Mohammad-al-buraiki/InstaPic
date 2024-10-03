@@ -1,0 +1,33 @@
+{
+  "welcome": "Welcome",
+  "no_posts": "No posts to show, follow this guy",
+  "follow": "Follow",
+  "built_by": "Built By",
+  "author_name": "Mohammad Al Buraiki",
+  "no_more_posts": "Looks like you reached the end of the page. Follow more people to see more posts.",
+  "No posts to show, follow this guy": "No posts to show, follow this guy",
+  "he has some cool content": "he has some cool content",
+  "Likes": "Likes",
+  "Posted": "Posted",
+  "comments": "comments",
+  "Comments": "Comments",
+  "Comment": "Comment",
+  "comment": "comment",
+  "View all": "View all",
+  "Add a comment...": "Add a comment...",
+  "Post": "Post",
+  "time": {
+    "secondsAgo": "{{count}}s ago",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago",
+    "weeksAgo": "{{count}}w ago"
+  },
+
+  "Joined on": "Joined on",
+  "OR": "OR",
+  "Don't have an account?": "Don't have an account?",
+  "Already have an account?": "Already have an account?",
+  "Sign Up": "Sign up",
+  "Login": "Login"
+}
