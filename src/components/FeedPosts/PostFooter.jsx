@@ -6,10 +6,12 @@ import useAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
 import { timeAgo } from '../../utils/timeAgo';
 import CommentsModal from '../Modals/CommentsModal';
+import { useTranslation } from 'react-i18next';
 
 const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const { isCommenting, handlePostComment } = usePostComment();
   const [comment, setComment] = useState('');
+  const { t } = useTranslation(); // Added translation hook
   const authUser = useAuthStore(state => state.user);
   const commentRef = useRef(null);
   const { handleLikePost, isLiked, likes } = useLikePost(post);
@@ -32,12 +34,12 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
         </Box>
       </Flex>
       <Text fontWeight={600} fontSize={'sm'}>
-        {likes} likes
+        {likes} {t('Likes')}
       </Text>
 
       {isProfilePage && (
         <Text fontSize='12' color={'gray'}>
-          Posted {timeAgo(post.createdAt)}
+          {t('Posted')} {timeAgo(post.createdAt, t)}
         </Text>
       )}
 
@@ -51,7 +53,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           </Text>
           {post.comments.length > 0 && (
             <Text fontSize='sm' color={'gray'} cursor={'pointer'} onClick={onOpen}>
-              View all {post.comments.length} comments
+              {t('View all')} {post.comments.length} {t('comments')}
             </Text>
           )}
           {/* COMMENTS MODAL ONLY IN THE HOME PAGE */}
@@ -64,7 +66,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           <InputGroup>
             <Input
               variant={'flushed'}
-              placeholder={'Add a comment...'}
+              placeholder={t('Add a comment...')}
               fontSize={14}
               onChange={e => setComment(e.target.value)}
               value={comment}
@@ -82,7 +84,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
                 isLoading={isCommenting}
                 isDisabled={!comment.trim()} // Disable the button if the comment is empty
               >
-                Post
+                {t('Post')}
               </Button>
             </InputRightElement>
           </InputGroup>

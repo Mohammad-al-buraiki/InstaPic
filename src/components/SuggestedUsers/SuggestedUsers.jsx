@@ -20,6 +20,9 @@ const SuggestedUsers = () => {
         </Flex>
       )}
 
+      {/* this here gets the suggested users from the useGetSuggestedUsers hook */}
+      {/* suggested users are the users that are not followed by the current user */}
+      {/* and are not the current user */}
       {suggestedUsers.map(user => (
         <SuggestedUser user={user} key={user.id} />
       ))}

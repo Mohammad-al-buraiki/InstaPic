@@ -77,12 +77,13 @@ import {
 import Comment from '../Comment/Comment';
 import usePostComment from '../../hooks/usePostComment';
 import { useEffect, useRef, useState } from 'react';
-
+import { useTranslation } from 'react-i18next';
 const CommentsModal = ({ isOpen, onClose, post }) => {
   const { handlePostComment, isCommenting } = usePostComment();
   const [comment, setComment] = useState(''); // Added state to track the comment input
   const commentRef = useRef(null);
   const commentsContainerRef = useRef(null);
+  const { t } = useTranslation(); // this hook is used for translation. it basically returns a function that we can use to translate our text
 
   const handleSubmitComment = async e => {
     // do not refresh the page, prevent it
@@ -107,7 +108,7 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
     <Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
       <ModalOverlay />
       <ModalContent bg={'black'} border={'1px solid gray'} maxW={'400px'}>
-        <ModalHeader>Comments</ModalHeader>
+        <ModalHeader>{t('Comments')}</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <Flex mb={4} gap={4} flexDir={'column'} maxH={'250px'} overflowY={'auto'} ref={commentsContainerRef}>
@@ -117,7 +118,7 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
           </Flex>
           <form onSubmit={handleSubmitComment} style={{ marginTop: '2rem' }}>
             <Input
-              placeholder='Comment'
+              placeholder={t('Comment')}
               size={'sm'}
               ref={commentRef}
               onChange={e => setComment(e.target.value)} // Track input changes
@@ -132,7 +133,7 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
                 isLoading={isCommenting}
                 isDisabled={!comment.trim()} // Disable if comment is empty or just spaces
               >
-                Post
+                {t('Post')}
               </Button>
             </Flex>
           </form>
