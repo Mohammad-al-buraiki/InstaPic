@@ -97,7 +97,7 @@ const HomePage = () => {
   // };
 
   return (
-    <Container maxW={'container.lg'} fontFamily={'Cursive'}>
+    <Container maxW={'container.lg'}>
       <Flex
         fontSize={14}
         color={'gray.500'}
