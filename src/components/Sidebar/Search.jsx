@@ -21,12 +21,13 @@ import { firestore } from '../../firebase/firebase';
 import { useEffect } from 'react';
 import useSearchUser from '../../hooks/useSearchUser';
 import SuggestedUser from '../SuggestedUsers/SuggestedUser';
+import { useTranslation } from 'react-i18next';
 const Search = () => {
   // const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const searchRef = useRef(null);
   const { user, isLoading, getUserProfile, setUser } = useSearchUser();
-
+  const { t } = useTranslation();
   const handleSearchUser = e => {
     e.preventDefault();
     getUserProfile(searchRef.current.value);
@@ -54,7 +55,7 @@ const Search = () => {
           onClick={onOpen}
         >
           <SearchLogo />
-          <Box display={{ base: 'none', md: 'block' }}>Search</Box>
+          <Box display={{ base: 'none', md: 'block' }}>{t('Search')}</Box>
         </Flex>
       </Tooltip>
 
@@ -72,7 +73,7 @@ const Search = () => {
 
               <Flex w={'full'} justifyContent={'flex-end'}>
                 <Button type='submit' ml={'auto'} size={'sm'} my={4} isLoading={isLoading}>
-                  Search
+                  {t('Search')}
                 </Button>
               </Flex>
             </form>

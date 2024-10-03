@@ -1,10 +1,10 @@
 import { Avatar, Box, Link, Tooltip } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
-
+import { useTranslation } from 'react-i18next';
 const ProfileLink = () => {
   const authUser = useAuthStore(state => state.user);
-
+  const { t } = useTranslation();
   return (
     <Tooltip
       hasArrow
@@ -27,7 +27,7 @@ const ProfileLink = () => {
         justifyContent={{ base: 'center', md: 'flex-start' }}
       >
         <Avatar size={'sm'} src={authUser?.profilePicURL || ''} />
-        <Box display={{ base: 'none', md: 'block' }}>Profile</Box>
+        <Box display={{ base: 'none', md: 'block' }}>{t('Profile')}</Box>
       </Link>
     </Tooltip>
   );
