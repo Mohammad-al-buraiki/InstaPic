@@ -1,7 +1,9 @@
 import { Box, Flex, Tooltip } from '@chakra-ui/react';
 import { NotificationsLogo } from '../../assets/constants';
-
+import { useTranslation } from 'react-i18next';
 const Notifications = () => {
+  const { t } = useTranslation(); // Added
+
   return (
     <Tooltip
       hasArrow
@@ -21,7 +23,7 @@ const Notifications = () => {
         justifyContent={{ base: 'center', md: 'flex-start' }}
       >
         <NotificationsLogo />
-        <Box display={{ base: 'none', md: 'block' }}>Notifications</Box>
+        <Box display={{ base: 'none', md: 'block' }}>{t('Notifications')}</Box>
       </Flex>
     </Tooltip>
   );

@@ -29,5 +29,11 @@
   "Don't have an account?": "Don't have an account?",
   "Already have an account?": "Already have an account?",
   "Sign Up": "Sign up",
-  "Login": "Login"
+  "Login": "Login",
+  "Home": "Home",
+  "Search": "Search",
+  "Profile": "Profile",
+  "Create": "Create",
+  "Notifications": "Notifications",
+  "Logout": "Log out"
 }

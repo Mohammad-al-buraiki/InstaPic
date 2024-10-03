@@ -25,5 +25,11 @@
   "Don't have an account?": "ليس لديك حساب؟",
   "Already have an account?": "هل لديك حساب؟",
   "Sign Up": "إنشاء حساب",
-  "Login": "تسجيل الدخول"
+  "Login": "تسجيل الدخول",
+  "Home": "الرئيسية",
+  "Search": "بحث",
+  "Profile": "الملف الشخصي",
+  "Create": "إنشاء منشور",
+  "Notifications": "الإشعارات",
+  "Logout": "تسجيل الخروج"
 }
