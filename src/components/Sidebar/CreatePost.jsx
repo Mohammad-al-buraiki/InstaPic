@@ -127,7 +127,7 @@ import { useLocation } from 'react-router-dom';
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore';
 import { firestore, storage } from '../../firebase/firebase';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
-
+import { useTranslation } from 'react-i18next';
 const CreatePost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [caption, setCaption] = useState('');
@@ -135,7 +135,7 @@ const CreatePost = () => {
   const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
   const showToast = useShowToast();
   const { isLoading, handleCreatePost } = useCreatePost();
-
+  const { t } = useTranslation();
   const handlePostCreation = async () => {
     try {
       await handleCreatePost(selectedFile, caption);
@@ -168,7 +168,7 @@ const CreatePost = () => {
           onClick={onOpen}
         >
           <CreatePostLogo />
-          <Box display={{ base: 'none', md: 'block' }}>Create</Box>
+          <Box display={{ base: 'none', md: 'block' }}>{t('Create')}</Box>
         </Flex>
       </Tooltip>
 
@@ -205,7 +205,7 @@ const CreatePost = () => {
 
           <ModalFooter>
             <Button mr={3} onClick={handlePostCreation} isLoading={isLoading}>
-              Post
+              {t('Post')}
             </Button>
           </ModalFooter>
         </ModalContent>

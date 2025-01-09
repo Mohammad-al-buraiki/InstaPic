@@ -1,8 +1,10 @@
 import { Box, Link, Tooltip } from '@chakra-ui/react';
 import { AiFillHome } from 'react-icons/ai';
 import { Link as RouterLink } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 const Home = () => {
+  const { t } = useTranslation(); // Added
+
   return (
     <Tooltip hasArrow label={'Home'} placement='right' ml={1} openDelay={500} display={{ base: 'block', md: 'none' }}>
       <Link
@@ -18,7 +20,7 @@ const Home = () => {
         justifyContent={{ base: 'center', md: 'flex-start' }}
       >
         <AiFillHome size={25} />
-        <Box display={{ base: 'none', md: 'block' }}>Home</Box>
+        <Box display={{ base: 'none', md: 'block' }}>{t('Home')}</Box>
       </Link>
     </Tooltip>
   );

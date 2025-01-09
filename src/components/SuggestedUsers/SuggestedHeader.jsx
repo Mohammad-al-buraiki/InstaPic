@@ -12,13 +12,9 @@ const SuggestedHeader = () => {
     <Flex justifyContent='space-between' alignItems={'center'} w={'full'}>
       <Flex alignItems={'center'} gap={2}>
         <Avatar
-          name='As a Programmer'
+          name={authUser && authUser.username ? authUser.username : 'Guest'}
           size={'lg'}
-          src={
-            authUser && authUser.profilePicURL
-              ? authUser.profilePicURL
-              : 'Guest'
-          }
+          src={authUser && authUser.profilePicURL ? authUser.profilePicURL : 'Guest'}
           // redirect onclick to profile page
           as={RouterLink}
           to={`/${authUser && authUser.username}`}
