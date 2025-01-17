@@ -92,7 +92,7 @@ const FeedPosts = () => {
               @m
             </Link>
           </Text>
-          <Text color={'red.400'}>, {t('he has some cool content')}</Text>
+          {/* <Text color={'red.400'}>, {t('he has some cool content')}</Text> */}
         </Flex>
       )}
     </Container>
